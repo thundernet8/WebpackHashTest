@@ -1,5 +1,6 @@
 import path from "path";
 import webpack from "webpack";
+const AssetsPlugin = require('assets-webpack-plugin');
 
 export default {
     entry: {
@@ -27,6 +28,10 @@ export default {
             context: __dirname,
             path: "manifest.json",
             name: "[name]_[chunkhash:8]"
+        }),
+        new AssetsPlugin({
+        	filename: 'vendors-config.json',
+        	path: './dist'
         })
     ]
 };

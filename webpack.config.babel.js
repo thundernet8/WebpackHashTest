@@ -2,6 +2,8 @@ import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
+import WebpackStableChunkId from "webpackstablechunkid";
+const vendorsConfig = require("./dist/vendors-config.json");
 
 export default {
     node: {
@@ -47,6 +49,7 @@ export default {
         ]
     },
     plugins: [
+        new WebpackStableChunkId(), // disable/enable this to test
         new webpack.HashedModuleIdsPlugin(),
         new webpack.DllReferencePlugin({
             context: __dirname,
@@ -63,6 +66,12 @@ export default {
         new webpack.optimize.CommonsChunkPlugin({
             name: "manifest",
             minChunks: Infinity
+        }),
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: "./src/index.html",
+            inject: true,
+            vendorsName: vendorsConfig.vendors.js
         })
     ]
 };
