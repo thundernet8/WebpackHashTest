@@ -4,7 +4,7 @@
 
 ## More
 
-The official hashmoduleidsplugin could keep chunhash stable via using hash module id rather number id, but it does not change the entry chunks specified in config.entry to have a hash id, and sometimes the entry chunk order may change without a config.entry change which lead to a chunkhash change.
+The official hashmoduleidsplugin could keep chunhash stable via using hash module id rather than number id, but it does not change the entry chunks specified in config.entry to have a hash id, and sometimes the entry chunk order may change without a config.entry change which lead to a chunkhash change.
 
 So I write a webpack plugin [WebpackStableChunkId](https://www.npmjs.com/package/webpackstablechunkid)to solve this, clilk[this](./webpack.config.babel.js) to find the usage.
 
